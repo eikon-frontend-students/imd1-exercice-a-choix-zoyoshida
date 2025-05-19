@@ -2,7 +2,7 @@ const board = document.getElementById("board");
 const statusText = document.getElementById("status");
 const resetBtn = document.getElementById("reset");
 
-let currentPlayer = "X";
+let currentPlayer = "1";
 let grid = Array(9).fill(null);
 
 const winningCombinations = [
@@ -23,7 +23,7 @@ function checkWinner() {
       return grid[a];
     }
   }
-  if (!grid.includes(null)) return "Egalité";
+  if (!grid.includes(null)) return "Tie";
   return null;
 }
 
@@ -32,28 +32,30 @@ function handleClick(e) {
   if (grid[index] || checkWinner()) return;
 
   grid[index] = currentPlayer;
-  e.target.textContent = currentPlayer;
   e.target.classList.add("taken");
+  e.target.classList.add("taken-" + currentPlayer);
 
   const winner = checkWinner();
   if (!statusText) return;
   if (winner) {
     statusText.textContent =
-      winner === "Egalité" ? "Match nul !" : `Joueur ${winner} a gagné !`;
+      winner === "Tie" ? "It's a tie !" : `Player ${winner} wins !`;
   } else {
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
-    statusText.textContent = `À ${currentPlayer} de jouer`;
+    currentPlayer = currentPlayer === "1" ? "2" : "1";
+    statusText.textContent = `Player ${currentPlayer} turn`;
   }
 }
 
 function resetGame() {
   grid = Array(9).fill(null);
-  currentPlayer = "X";
+  currentPlayer = "1";
   if (!statusText) return;
-  statusText.textContent = "Joueur X commence";
+  statusText.textContent = "Player 1 starts !";
   board.querySelectorAll(".cell").forEach((cell) => {
     cell.textContent = "";
     cell.classList.remove("taken");
+    cell.classList.remove("taken-1");
+    cell.classList.remove("taken-2");
   });
 }
 

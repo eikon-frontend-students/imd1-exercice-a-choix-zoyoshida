@@ -1,12 +1,45 @@
+@font-face {
+  font-family: "PixelifySans";
+  src: url(/font/PixelifySans-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url(/font/IBM_Plex_Mono/IBMPlexMono-Regular.ttf);
+}
+
 body {
   font-family: "IBM Plex Mono", sans-serif;
   text-align: center;
+
   background: #0b0623;
-  color: white;
+  color: #f8dde5;
+  font-size: 14px;
 }
 h1 {
-  margin-top: 20px;
+  margin: 20px auto;
+  font-size: 30px;
+  font-family: "PixelifySans";
 }
+
+p {
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.tic-tac-toe {
+  margin: 60px auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 400px;
+  padding: 30px;
+
+  border-radius: 15px;
+  border: 1px solid #ff9a52;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, 100px);
@@ -16,8 +49,12 @@ h1 {
   width: max-content;
 }
 .cell {
-  background: white;
-  border: 2px solid #333;
+  background-color: transparent;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  border: 2px solid #f8dde5;
   font-size: 3rem;
   display: flex;
   align-items: center;
@@ -27,9 +64,22 @@ h1 {
 .cell.taken {
   cursor: not-allowed;
 }
+
+.taken-1 {
+  background-image: url("/images/artichaux.png");
+}
+
+.taken-2 {
+  background-image: url("/images/leprof.png");
+}
+
 .status {
   margin-top: 20px;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-family: "PixelifySans";
+  background-color: #ff9a52;
+  padding: 0px 10px;
+  color: #0b0623;
 }
 .reset {
   margin-top: 20px;
