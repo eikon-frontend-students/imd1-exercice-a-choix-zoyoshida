@@ -15,9 +15,15 @@ body {
   color: #f8dde5;
   font-size: 14px;
 }
+
+marquee {
+  background-color: #ff9a52;
+  color: #0b0623;
+}
+
 h1 {
   margin: 20px auto;
-  font-size: 30px;
+  font-size: 40px;
   font-family: "PixelifySans", sans-serif;
 }
 
@@ -65,9 +71,17 @@ p {
   justify-content: center;
   cursor: pointer;
 }
+
+.cell:hover {
+  transform: scale(1.1, 1.1) rotate(10deg);
+}
+
 .cell.taken {
   cursor: not-allowed;
   background-position: center;
+}
+.cell.taken:hover {
+  transform: none;
 }
 
 .taken-1 {
@@ -86,16 +100,89 @@ p {
   padding: 0px 10px;
   color: #0b0623;
 }
-.reset {
+button,
+.button {
   margin-top: 20px;
   padding: 10px 20px;
   font-family: "IBM Plex Mono", sans-serif;
   font-size: 18px;
+  color: #0b0623;
+  text-decoration: none;
   cursor: pointer;
 
   border-radius: 0.25rem;
   background-color: #ffade3;
   border-color: #0b0623;
   border-width: 1px;
+  border-style: solid;
   box-shadow: 3px 3px 0px 0px rgba(133, 89, 130, 0.75);
+}
+
+button:hover,
+.button:hover {
+  background-color: #f6a2da;
+}
+
+.tooltip {
+  position: relative;
+  text-decoration: underline dotted;
+  font-style: italic;
+  transition: color linear 150ms;
+  cursor: help;
+  box-sizing: content-box;
+  border-top: 5px solid transparent;
+}
+
+.tooltip:hover,
+.tooltip:focus-visible {
+  color: #ff9a52;
+}
+
+.tooltip:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after,
+.tooltip:focus-visible::before,
+.tooltip:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip::before,
+.tooltip::after {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 150ms, opacity 150ms linear;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #313131;
+  left: 50%;
+  top: 0;
+  transform: translateY(-100%) translateX(-50%);
+}
+
+.tooltip::after {
+  content: attr(data-content);
+  font-size: 0.8rem;
+  border-radius: 6px;
+  color: #fff;
+  font-style: normal;
+  background: #313131;
+  padding: 12px;
+  text-align: center;
+  position: absolute;
+  white-space: nowrap;
+  top: 0;
+  left: 50%;
+  transform: translateY(-110%) translateX(-50%);
 }

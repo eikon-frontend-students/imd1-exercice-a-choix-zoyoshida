@@ -39,7 +39,7 @@ function handleClick(e) {
   if (!statusText) return;
   if (winner) {
     statusText.textContent =
-      winner === "Tie" ? "It's a tie !" : `Player ${winner} wins !`;
+      winner === "Tie" ? "It's a tie !" : `>>Player ${winner} wins !!!<<`;
   } else {
     currentPlayer = currentPlayer === "1" ? "2" : "1";
     statusText.textContent = `Player ${currentPlayer} turn`;
@@ -73,3 +73,57 @@ function createBoard() {
 resetBtn.addEventListener("click", resetGame);
 
 createBoard();
+
+/*------------ confetti !!!----------------------*/
+
+function createConfetti(x, y) {
+  const colors = [
+    "#ff9a52",
+    "#ffade3",
+    "#f8dde5",
+    "#0b0623",
+    "#ffec52",
+    "#52ffd6",
+  ];
+  for (let i = 0; i < 24; i++) {
+    const confetti = document.createElement("div");
+    confetti.style.position = "fixed";
+    confetti.style.left = x + "px";
+    confetti.style.top = y + "px";
+    confetti.style.width = "8px";
+    confetti.style.height = "8px";
+    confetti.style.background =
+      colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.borderRadius = "2px";
+    confetti.style.pointerEvents = "none";
+    confetti.style.zIndex = 9999;
+    confetti.style.opacity = 0.8;
+    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+    confetti.style.transition =
+      "transform 1s cubic-bezier(.17,.67,.83,.67), opacity 1s";
+
+    document.body.appendChild(confetti);
+
+    // Random direction and distance
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = 80 + Math.random() * 80;
+    const dx = Math.cos(angle) * distance;
+    const dy = Math.sin(angle) * distance + 60;
+
+    setTimeout(() => {
+      confetti.style.transform = `translate(${dx}px, ${dy}px) rotate(${
+        Math.random() * 720
+      }deg)`;
+      confetti.style.opacity = 0;
+    }, 10);
+
+    // Remove after animation
+    setTimeout(() => {
+      confetti.remove();
+    }, 1100);
+  }
+}
+
+window.addEventListener("click", (e) => {
+  createConfetti(e.clientX, e.clientY);
+});
