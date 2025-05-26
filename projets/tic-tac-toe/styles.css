@@ -18,12 +18,16 @@ body {
 h1 {
   margin: 20px auto;
   font-size: 30px;
-  font-family: "PixelifySans";
+  font-family: "PixelifySans", sans-serif;
 }
 
 p {
   margin: 20px auto;
   max-width: 600px;
+}
+
+.cow {
+  width: 30px;
 }
 
 .tic-tac-toe {
@@ -63,6 +67,7 @@ p {
 }
 .cell.taken {
   cursor: not-allowed;
+  background-position: center;
 }
 
 .taken-1 {
@@ -76,7 +81,7 @@ p {
 .status {
   margin-top: 20px;
   font-size: 2rem;
-  font-family: "PixelifySans";
+  font-family: "PixelifySans", sans-serif;
   background-color: #ff9a52;
   padding: 0px 10px;
   color: #0b0623;
@@ -84,6 +89,13 @@ p {
 .reset {
   margin-top: 20px;
   padding: 10px 20px;
-  font-size: 1rem;
+  font-family: "IBM Plex Mono", sans-serif;
+  font-size: 18px;
   cursor: pointer;
+
+  border-radius: 0.25rem;
+  background-color: #ffade3;
+  border-color: #0b0623;
+  border-width: 1px;
+  box-shadow: 3px 3px 0px 0px rgba(133, 89, 130, 0.75);
 }
