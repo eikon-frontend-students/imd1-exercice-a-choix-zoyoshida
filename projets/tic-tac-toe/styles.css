@@ -59,12 +59,14 @@ p {
   width: max-content;
 }
 .cell {
-  background-color: transparent;
+  background-color: #0b0623;
   background-origin: border-box;
   background-repeat: no-repeat;
   background-size: contain;
 
   border: 2px solid #f8dde5;
+  border-radius: 15px;
+  box-shadow: 3px 3px 0px 0px #f8dde5;
   font-size: 3rem;
   display: flex;
   align-items: center;
@@ -74,6 +76,7 @@ p {
 
 .cell:hover {
   transform: scale(1.1, 1.1) rotate(10deg);
+  transition: all 0.1s ease-out;
 }
 
 .cell.taken {
@@ -99,7 +102,26 @@ p {
   background-color: #ff9a52;
   padding: 0px 10px;
   color: #0b0623;
+  animation: pulse 2s infinite;
 }
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.99);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  50% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.99);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
 button,
 .button {
   margin-top: 20px;
