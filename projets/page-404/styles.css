@@ -19,6 +19,7 @@ body {
 marquee {
   background-color: #ff9a52;
   color: #0b0623;
+  width: 100vw;
 }
 
 h1 {
@@ -146,7 +147,7 @@ header {
 
 button,
 .button {
-  margin-top: 20px;
+  margin: 20px auto;
   padding: 10px 20px;
   font-family: "IBM Plex Mono", sans-serif;
   font-size: 18px;
@@ -160,6 +161,9 @@ button,
   border-width: 1px;
   border-style: solid;
   box-shadow: 3px 3px 0px 0px rgba(133, 89, 130, 0.75);
+
+  display: block;
+  width: fit-content;
 }
 
 button:hover,
@@ -229,4 +233,37 @@ button:hover,
   top: 0;
   left: 50%;
   transform: translateY(-110%) translateX(-50%);
+}
+
+@media (max-width: 600px) {
+  .tic-tac-toe {
+    width: auto;
+  }
+
+  .board {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+  }
+
+  marquee {
+    display: none;
+  }
+
+  .tooltip {
+    position: relative;
+    text-decoration: none;
+    font-style: normal;
+    transition: color linear 150ms;
+    box-sizing: content-box;
+    border-top: 5px solid transparent;
+  }
+
+  .tooltip:hover,
+  .tooltip:focus-visible {
+    color: #f8dde5;
+  }
+
+  .tooltip::after {
+    content: attr(none);
+  }
 }
