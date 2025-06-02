@@ -1,10 +1,10 @@
 @font-face {
   font-family: "PixelifySans";
-  src: url(/font/PixelifySans-VariableFont_wght.ttf);
+  src: url(font/PixelifySans-VariableFont_wght.ttf);
 }
 @font-face {
   font-family: "IBM Plex Mono";
-  src: url(/font/IBM_Plex_Mono/IBMPlexMono-Regular.ttf);
+  src: url(font/IBM_Plex_Mono/IBMPlexMono-Regular.ttf);
 }
 
 body {
@@ -27,13 +27,35 @@ h1 {
   font-family: "PixelifySans", sans-serif;
 }
 
+h2 {
+  font-size: 20px;
+  font-family: "PixelifySans", sans-serif;
+  width: fit-content;
+  color: #0b0623;
+}
+
 p {
   margin: 20px auto;
   max-width: 600px;
 }
 
-.cow {
-  width: 30px;
+.window {
+  border: 2px solid #f6a2da;
+  max-width: 1256px;
+  margin: 20px auto;
+  padding-bottom: 60px;
+  border-radius: 8px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 8px;
+  height: 36px;
+
+  background-color: #f6a2da;
 }
 
 .tic-tac-toe {
@@ -88,11 +110,11 @@ p {
 }
 
 .taken-1 {
-  background-image: url("/images/artichaux.png");
+  background-image: url("artichaux.png");
 }
 
 .taken-2 {
-  background-image: url("/images/leprof.png");
+  background-image: url("leprof.png");
 }
 
 .status {
@@ -107,7 +129,7 @@ p {
 
 @keyframes pulse {
   0% {
-    transform: scale(0.99);
+    transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
   }
 
@@ -117,7 +139,7 @@ p {
   }
 
   100% {
-    transform: scale(0.99);
+    transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
